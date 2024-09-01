@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -160,3 +161,19 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+=======
+# Ignore SQLite database file
+db.sqlite3
+
+# Ignore Django migrations
+migrations/
+
+# Ignore virtual environment folder (adjust name if it's different)
+mynewenv/
+
+# Ignore virtual environment folder (adjust name if it's different)
+myvenv/
+
+# Ignore Python cache files
+__pycache__/
+>>>>>>> 47f5dbd (Initial commit)
