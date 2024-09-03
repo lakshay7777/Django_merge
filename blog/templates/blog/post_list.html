@@ -17,8 +17,8 @@
               <img style="width: 276px;height: 130px;" src="{% if post.feature_image %}{{post.feature_image.url}} {% else %} {% endif %}" class="card-img-top" alt="..." >
             </div>
             <h5 class="card-title">{{ post.title }}</h5>
+            <h5 class="card-title">Category-> <a style="text-decoration: none;" href="{% url 'category_post_list' post.category.slug %}">{{ post.category }}</a></h5>
             <p class="card-text">{{ post.text|truncatechars:'400'}}</p>
-            
            <div>
             <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read</a>
            </div>
@@ -26,6 +26,5 @@
         </div>
     {% endfor %}
     </div>
-
     {% endblock %}
 </body>

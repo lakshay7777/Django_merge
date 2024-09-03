@@ -12,10 +12,13 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('profile/', views.profile_view, name='profile'),
     path('', views.post_list, name='post_list'),
-    path('profile-edit/', views.profile_edit, name='profile_edit'), 
+    path('profile-edit/', views.profile_edit, name='profile_edit'),
+    path('category/<str:slug>/', views.category_post_list, name='category_post_list'),
+    path('tag/<str:slug>/', views.tag_post_list, name='tag_post_list'),
 
-    #####################################
-   
-  
 
+
+
+
+    
 ]

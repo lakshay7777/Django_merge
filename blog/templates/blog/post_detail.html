@@ -18,7 +18,7 @@
       {% endif %}
     </aside>
     <h1>
-      <img style="width: 45px;border-radius: 0%;"
+      <img style="width: 45px;border-radius: 100%; border-color: black 10px;"
         src="{% if post.thumnail_image %}{{ post.thumnail_image.url }}{% endif %}" class="card-img-top" alt="...">
       &nbsp; {{ post.title }}
     </h1>
@@ -29,7 +29,6 @@
     <div>
       <p style="font-size: large;">
         <b>Category:-</b>&nbsp;&nbsp; {{ post.category }}
-
         <span style="margin-left: 65%;">
           {% if post.published_date %}
           <time class="date">{{ post.published_date }}</time>
@@ -43,10 +42,10 @@
     </p><br>
     <p><strong>Tags:-</strong>
       {% for tag in post.tag.all %}
-      {{ tag }} |
+      <a style="text-decoration: none;" href="{% url 'tag_post_list' slug=tag.slug %}"> {{ tag }}</a> |
       {% endfor %}
-    </p><br>
-    
+    </p>
+    <br>
       <div class="dropdown">
         <button style="background-color: rgb(238, 80, 6);" class="btn btn-secondary dropdown-toggle" type="button"
           data-bs-toggle="dropdown" aria-expanded="false">
@@ -74,7 +73,6 @@
           </div>
         </div>
       </div>
-
       {% if not comment %}
       no comments yet....
       {% else %}
@@ -91,7 +89,6 @@
         </p>
         {% endfor %}
         </p>
-
         <div class="dropdown" style="display: flex; justify-content: end;">
           <button style="background-color:rgb(238, 80, 6) ;" class="btn btn-secondary dropdown-toggle" type="button"
             data-bs-toggle="dropdown" aria-expanded="false">
@@ -102,11 +99,6 @@
               <h2>reply </h2>
               <form action="" method="post">
                 {% csrf_token %}
-                <!-- <div class="form-group">
-                <label for="name">text</label>
-                <input type="text" name="reply" value="" class="form-control" id="usr">
-                <input type="text" name="comment" value="{{comment}}" hidden>
-              </div> -->
                 <div>
                   <input type="hidden" name="comment" value="{{ comment.id }}">
                   <input type="text" name="reply" required oninvalid="setCustomValidity('Plese enter your reply.')" />
@@ -118,16 +110,9 @@
         </div>
       </div>
       {% endfor %}
-
       {% endif %}
-    
-
   </article>
 </div>
-
-
 {% endblock %}
 
 
-
-<!-- -->

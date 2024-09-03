@@ -6,25 +6,31 @@
 </head>
 <body>
    {% block content %}
+   <div style="border: 2px solid black; background-color: rgb(238, 234, 234); margin-right: 400px; margin-left: 400px; margin-bottom:100px ; text-align: center; display: flex; flex-direction: column;">
    <h2>Edit Profile</h2>
    <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="edit-profile">
-      <h3>phone_number</h3>
+      <div>
+        <h4>User_profile_image</h4>
+        <input  type="file" name="user_profile_image" value="{{ user_profile_image }}"  id="id_user_profile_image">
+      </div>
+      <h4>phone_number</h4>
       <input type="text" name="phone_number" value="{{ user.phone_number }}" maxlength="10" id="id_phone_number">
-      <h3>Username</h3>
+      <h4>Username</h4>
       <input type="text" name="username" value="{{ user.username }}" maxlength="150" required="" id="id_username">
-      <h3>city</h3>
+      <h4>city</h4>
       <input type="text" name="city" value="{{ user.city }}" maxlength="400" id="id_city">
-      <h3>Email</h3>
+      <h4>Email</h4>
       <input type="email" name="email" value="{{ user.email }}" maxlength="254" id="id_email">
-      <h3>state</h3>
+      <h4>state</h4>
       <input type="state" name="state" value="{{ user.state }}" maxlength="254" id="id_state">
-      <h3>country</h3>
-      <input type="country" name="country" value="{{ user.country }}" maxlength="254" id="id_country">
+      <h4>country</h4>
+      <input type="country" name="country" value="{{ user.country }}" maxlength="254" id="id_country"><br><br>
       <button type="submit">Submit</button>
     </div>
   </form>
   {% endblock %}
+</div>
 </body>
 </html>

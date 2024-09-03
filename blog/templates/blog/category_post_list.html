@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}<title>{{ category.name }} Posts</title>{% endblock %}
+
+<body>
+    {% block content %}
+    <h1>{{ category.name }} Posts</h1>
+    <div style="display: flex; flex-wrap: wrap;">
+    {% for post in posts %}
+        {% if forloop.counter0|divisibleby:3 and not forloop.first %}
+            </div><div style="display: flex; flex-wrap: wrap;">
+        {% endif %}
+        <div class="card" style="margin-right: 60px; width: 310px; margin-top: 50px; box-shadow: 10px 10px 15px  rgb(18, 163, 211);">
+          <div class="card-body">
+            <div>
+              <img style="width: 276px;height: 130px;" src="{% if post.feature_image %}{{post.feature_image.url}} {% else %} {% endif %}" class="card-img-top" alt="..." >
+            </div>
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.text|truncatechars:'400'}}</p>
+           <div>
+            <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read</a>
+           </div>
+          </div>
+        </div>
+    {% endfor %}
+    </div>
+    {% endblock %}
+</body>
