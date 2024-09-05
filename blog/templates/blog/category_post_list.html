@@ -13,7 +13,7 @@
         <div class="card" style="margin-right: 60px; width: 310px; margin-top: 50px; box-shadow: 10px 10px 15px  rgb(18, 163, 211);">
           <div class="card-body">
             <div>
-              <img style="width: 276px;height: 130px;" src="{% if post.feature_image %}{{post.feature_image.url}} {% else %} {% endif %}" class="card-img-top" alt="..." >
+              <a href="{% url 'post_detail' post.slug %}"><img style="width: 276px;height: 130px;" src="{% if post.feature_image %}{{post.feature_image.url}} {% else %} {% endif %}" class="card-img-top" alt="..." ></a>
             </div>
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.text|truncatechars:'400'}}</p>

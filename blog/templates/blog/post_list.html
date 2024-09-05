@@ -14,10 +14,15 @@
         <div class="card" style="margin-right: 60px; width: 310px; margin-top: 50px; box-shadow: 10px 10px 15px  rgb(18, 163, 211);">
           <div class="card-body">
             <div>
-              <img style="width: 276px;height: 130px;" src="{% if post.feature_image %}{{post.feature_image.url}} {% else %} {% endif %}" class="card-img-top" alt="..." >
+              <a href="{% url 'post_detail' post.slug %}"><img style="width: 276px;height: 130px;" src="{% if post.feature_image %}{{post.feature_image.url}} {% else %} {% endif %}" class="card-img-top" alt="..." ></a>
             </div>
             <h5 class="card-title">{{ post.title }}</h5>
-            <h5 class="card-title">Category-> <a style="text-decoration: none;" href="{% url 'category_post_list' post.category.slug %}">{{ post.category }}</a></h5>
+            <h5 class="card-title">Category:- <a style="text-decoration: none;" href="{% url 'category_post_list' post.category.slug %}">{{ post.category }}</a></h5>
+            <p><strong>Tags:-</strong>
+              {% for tag in post.tag.all %}
+              <a style="text-decoration: none;" href="{% url 'tag_post_list' slug=tag.slug %}"> {{ tag }}</a> |
+              {% endfor %}
+            </p>
             <p class="card-text">{{ post.text|truncatechars:'400'}}</p>
            <div>
             <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read</a>

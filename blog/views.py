@@ -41,13 +41,15 @@ def post_detail(request, slug):
         if comment is not None:
             Comment.objects.create(text=reply, post=post, parent=comment)
         else:
-            print('y')
             Comment.objects.create(name=name, email=email, text=text, post=post)
         return redirect(reverse('post_detail', kwargs={'slug': post.slug}))
     else:
         post = get_object_or_404(Post, slug=slug)
         comment = Comment.objects.filter(post=post, parent__isnull=True)
-        return render(request, 'blog/post_detail.html', {'post': post, 'comment': comment})
+        categories = Category.objects.all()
+        tags = Tag.objects.all()
+        return render(request, 'blog/post_detail.html', {'post': post, 'comment': comment, 'categories': categories, 'tags': tags})
+
 
 def tag_post_list(request, slug):
     tag = get_object_or_404(Tag, slug=slug)
@@ -141,3 +143,7 @@ def profile_edit(request):
         form = ProfileForm(instance=request.user)
     return render(request, 'blog/profile_edit.html', {'form': form})
 
+
+
+
+  
